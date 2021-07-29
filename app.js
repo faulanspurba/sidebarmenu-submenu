@@ -1,14 +1,23 @@
-const arrows = document.querySelectorAll('.arrow');
+const list = document.querySelectorAll('.nav-links li');
 const sidebar = document.querySelector('.sidebar');
 const hamburger = document.querySelector('.hamburger');
 
 
 
 
-for (const arrow of arrows) {
-    arrow.addEventListener('click', (e)=>{
-        let arrowParent = e.target.parentElement.parentElement;
-        arrowParent.classList.toggle("show-menu");
+for (const li of list) {
+    li.addEventListener('click', function(e){
+        if(this.parentElement.parentElement.classList.contains("close")){
+            return;
+        } else {
+            if(this.children.length > 1){
+                if(this.children[1].classList.contains('sub-menu')){
+                    li.classList.toggle('show-menu')
+                }
+            }
+        }
+        
+        
     })
 }
 
